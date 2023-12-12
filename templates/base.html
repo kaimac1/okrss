@@ -1,0 +1,18 @@
+<!doctype html>
+<title>okrss</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+  <h1>okrss</h1>
+  <a href="addfeed">+ add feed</a>
+  🗘 refresh
+  ☰ settings
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>

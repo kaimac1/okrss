@@ -1,0 +1,18 @@
+html { font-family: sans-serif; padding: 1rem; }
+body { max-width: 960px; margin: 0 auto; background: white; }
+h1 { font-family: serif; }
+a { color: #377ba8; }
+
+.entry {
+    padding: 0.5em;
+    border-bottom: 1px solid lightgray;
+    display: flex;
+}
+.entry:last-child {
+    border-bottom: none;
+}
+.feedname {
+    width: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
