@@ -2,6 +2,6 @@
 
 {% block content %}
 {% for item in items %}
-<div class="entry"><div class="feedname">{{ item.feed }}</div><div class="title">{{ item.title }}</div></div>
+<div class="entry"><div class="entry_feed">{{ item.feed }}</div><div class="entry_title"><a href="article/{{item.id}}">{{ item.title }}</a></div><div class="entry_date">{{ item.date }} <span class="entry_time">{{ item.time }}</span></div></div>
 {% endfor %}
 {% endblock %}

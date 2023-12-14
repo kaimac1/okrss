@@ -1,7 +1,18 @@
 html { font-family: sans-serif; padding: 1rem; }
-body { max-width: 960px; margin: 0 auto; background: white; }
+body { max-width: 960px; margin: 0 auto; background: #fff8f0; }
 h1 { font-family: serif; }
-a { color: #377ba8; }
+a { color: #377ba8; text-decoration:none; }
+
+nav { margin-bottom: 20px;}
+
+.btn {
+    line-height: 1.0;
+    padding: 4px;
+    margin: 2px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
 
 .entry {
     padding: 0.5em;
@@ -11,8 +22,30 @@ a { color: #377ba8; }
 .entry:last-child {
     border-bottom: none;
 }
-.feedname {
+.entry_feed {
     width: 200px;
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.entry_title {
+    width:560px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.entry_date {
+    width:180px;
+    text-align: right;
+}
+.entry_time {
+    color: gray;
+}
+
+.content {
+}
+.content img {
+    max-width: 100%;
+    height: auto;
+/*    object-fit: contain;*/
+/*    width: 100%;
+    height:100%;
+*/}
