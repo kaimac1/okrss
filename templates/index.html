@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="feeds">
+{% for feed in feeds %}
+<div class="feed">
+{% if feed.unread > 0 %}<div class="num_unread">{{ feed.unread }}</div>{% endif %} {{ feed.name }}
+</div>
+{% endfor %}
+</div>
+
 {% for item in items %}
-<div class="entry"><div class="entry_feed">{{ item.feed }}</div><div class="entry_title"><a href="article/{{item.id}}">{{ item.title }}</a></div><div class="entry_date">{{ item.date }} <span class="entry_time">{{ item.time }}</span></div></div>
+<div class="entry {{ "unread" if not item.isread }}">
+    <div class="entry_feed">{{ item.feed }}</div>
+    <div class="entry_title"><a href="article/{{item.id}}">{{ item.title }}</a></div>
+    <div class="entry_date">{{ item.date }} <span class="entry_time">{{ item.time }}</span></div>
+</div>
 {% endfor %}
 {% endblock %}

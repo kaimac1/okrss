@@ -1,16 +1,35 @@
 html { font-family: sans-serif; padding: 1rem; }
 body { max-width: 960px; margin: 0 auto; background: #fff8f0; }
 h1 { font-family: serif; }
-a { color: #377ba8; text-decoration:none; }
+a { color: #178519; text-decoration:none; }
+/*#377ba8;*/
 
-nav { margin-bottom: 20px;}
-
+nav { margin-bottom: 40px;}
 .btn {
     line-height: 1.0;
     padding: 4px;
     margin: 2px;
     border: 1px solid gray;
     border-radius: 8px;
+}
+
+.feeds {
+    position:absolute;
+    left:0;
+    padding:1em;
+}
+.feed {
+    font-style: italic;
+    padding: 0.3em;
+    color: gray;
+}
+.num_unread {
+    display: inline;
+    background: #178519;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    font-style: normal;
 }
 
 
@@ -22,15 +41,23 @@ nav { margin-bottom: 20px;}
 .entry:last-child {
     border-bottom: none;
 }
+.unread .entry_title {
+    font-weight: bold;
+}
+
+
 .entry_feed {
+    font-style: italic;
     width: 200px;
+    white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 .entry_title {
     width:560px;
+/*    white-space: nowrap;
     text-overflow: ellipsis;
-    overflow: hidden;
+    overflow: hidden;*/
 }
 .entry_date {
     width:180px;

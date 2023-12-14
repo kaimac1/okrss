@@ -99,10 +99,20 @@ def home():
         item['time'] = row['date_published'].strftime('%H:%M')
         item['summary'] = row['summary']
         item['content'] = row['content']
+        item['isread'] = row['read']
         item['id'] = row['id']
         items.append(item)
+
+    feeds = []
+    feeds_db = db.execute('SELECT * from feed').fetchall()
+    for row in feeds_db:
+        unread = db.execute('SELECT COUNT(*) FROM article WHERE feed_id = ? AND read = 0', (row['id'],)).fetchone()[0]
+        feed = {}
+        feed['name'] = row['name']
+        feed['unread'] = unread
+        feeds.append(feed)
     
-    return render_template('index.html', items=items)
+    return render_template('index.html', items=items, feeds=feeds)
 
 @app.route("/addfeed", methods=('GET', 'POST'))
 @auth
@@ -129,8 +139,18 @@ def refresh_feeds():
 def read_article(artid):
     db = get_db()
     row = db.execute('SELECT * from article WHERE id = ?', (artid, )).fetchone()
+    db.execute('UPDATE article SET read = true WHERE id = ?', (artid, ))
+    db.commit()
     print(row)
     data = {}
     data['title'] = row['title']
     data['content'] = row['content']
     return render_template('article.html', data=data)
+
+@app.route("/markallread")
+@auth
+def mark_all_as_read():
+    db = get_db()
+    db.execute('UPDATE article SET read = true')
+    db.commit()
+    return redirect(url_for("home"))
